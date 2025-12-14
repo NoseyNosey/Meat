@@ -1,0 +1,23 @@
+@use '../../foundations/variables'as *;
+@use '../../foundations/mixins'as *;
+
+.u-text-center {
+  text-align: center;
+}
+
+@include sp-only {
+  .u-sp-text-center {
+    text-align: center;
+  }
+}
+
+.u-flex-x-center {
+  display: flex;
+  justify-content: center;
+}
+
+.u-flex-y-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,159 @@
+@use '../foundations/variables'as *;
+@use '../foundations/mixins'as *;
+
+/* ==========================================================================
+   Perfect Reset CSS - Combination of Eric Meyer Reset, Normalize.css, 
+   and additional modern best practices.
+   ========================================================================== */
+
+/* 基本リセット (Eric Meyer Reset) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Box-sizing を標準化 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* HTML5 の要素を display: block に設定 */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* フォントの継承と調整 */
+html {
+  font-family: sans-serif;
+  color: $color-black;
+  line-height: 1.8;
+  font-family: $font-primary;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* リンクの標準化 */
+a {
+  text-decoration: none;
+  background-color: transparent;
+  color: inherit;
+  transition: $transition;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+  outline: none;
+  opacity: 0.7;
+}
+
+/* 画像のリセット */
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-style: none;
+}
+
+/* フォーム要素の標準化 */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  appearance: none;
+}
+
+/* ボタンのデフォルトスタイル */
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+/* リストの標準化 */
+ul, ol {
+  list-style: none;
+}
+
+/* テキストのリセット */
+strong, b {
+  font-weight: bold;
+}
+
+em, i {
+  font-style: italic;
+}
+
+/* テーブルの標準化 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* フォーム要素のリセット */
+input, button, textarea, select {
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+/* フォーカス時のスタイルを強調（アクセシビリティ） */
+:focus {
+  outline: none;
+}
+
+/* スクロールの標準化 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 余白の統一 */
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  overflow: hidden;
+}
+
+/*
+¥hidden 属性を適切に処理 */
+[hidden] {
+  display: none;
+}
+

@@ -1,0 +1,52 @@
+@use "sass:math";
+
+/* ==========================================================================
+   Variables - プロジェクト全体で使う変数を管理
+   ========================================================================== */
+
+/* 基本のカラーパレット（色ベース） */
+$color-black: #262626;
+$color-white: #fff;
+$color-red: #660015;
+$color-light-red: #AD1129;
+
+/* 透過バージョン（rgba を使う） */
+$color-black-alpha-75: rgba($color-black, 0.75);
+$color-black-alpha-50: rgba($color-black, 0.5);
+$color-black-alpha-25: rgba($color-black, 0.25);
+
+/* UI 用に変数を再定義（用途ベース） */
+
+/* 基本フォント */
+$font-primary: 'ZenOldMincho',
+sans-serif;
+
+/* フォントウェイト */
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semiBold: 600;
+$font-weight-Bold: 700;
+
+/* フォントサイズ */
+
+/* 行間 */
+
+/* スペーシング */
+
+$breakpoints: (
+  'sp': 768px,
+  'pc': 769px
+);
+
+/* コンテナの最大幅 */
+$container-width-sp: 375px;
+$container-width-pc: 1440px;
+$container-width-sm: 1040px;
+$container-width-md: 1240px;
+
+/* transition */
+$transition:  0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+/* ゼロを統一するためのユーティリティ */
+$zero: 0px;

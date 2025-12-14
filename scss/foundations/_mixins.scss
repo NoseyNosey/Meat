@@ -1,0 +1,355 @@
+@use "sass:math";
+@use "sass:map";
+@use "../foundations/variables" as *;
+
+/* ==========================================================================
+   mixins.scss - プロジェクト全体で使用する共通処理やスタイル
+   ========================================================================== */
+
+/* ==========================================================================
+   1. px を vw に変換する関数 (PC用 / SP用)
+   ========================================================================== */
+
+// ---------------------------------
+// PC用の px → vw 変換関数
+// デフォルトの基準幅: $container-width-pc (例: 1440px)
+// ---------------------------------
+@function px-to-vw($px, $base: $container-width-pc) {
+  @return math.div($px, $base) * 100vw;
+}
+
+// ---------------------------------
+// SP用の px → vw 変換関数
+// デフォルトの基準幅: $container-width-sp (例: 375px)
+// ---------------------------------
+@function sp-px-to-vw($px, $base: $container-width-sp) {
+  @return math.div($px, $base) * 100vw;
+}
+
+/* ==========================================================================
+   2. フォントサイズ (font-size)
+   ========================================================================== */
+
+/// フォントサイズを vw 単位に変換（PC用）
+@mixin font-vw($size) {
+  font-size: px-to-vw($size);
+}
+
+/// フォントサイズを vw 単位に変換（SP用）
+@mixin sp-font-vw($size) {
+  font-size: sp-px-to-vw($size);
+}
+
+/* ==========================================================================
+   3. 幅・高さ (width, height, max-width, max-height)
+   ========================================================================== */
+
+/// 幅を vw 単位に変換（PC用）
+@mixin width-vw($size) {
+  width: px-to-vw($size);
+}
+
+@mixin width-im-vw($size) {
+  width: px-to-vw($size) !important;
+}
+
+/// 幅を vw 単位に変換（SP用）
+@mixin sp-width-vw($size) {
+  width: sp-px-to-vw($size);
+}
+
+/// 幅を vw 単位に変換（SP用）
+@mixin sp-width-im-vw($size) {
+  width: sp-px-to-vw($size) !important;
+}
+
+/// 最大幅を vw 単位に変換（PC用）
+@mixin max-width-vw($size) {
+  max-width: px-to-vw($size);
+}
+
+/// 最大幅を vw 単位に変換（SP用）
+@mixin sp-max-width-vw($size) {
+  max-width: sp-px-to-vw($size);
+}
+
+/// 高さを vw 単位に変換（PC用）
+@mixin height-vw($size) {
+  height: px-to-vw($size);
+}
+
+/// 最小高さを vw 単位に変換（PC用）
+@mixin min-height-vw($size) {
+  min-height: px-to-vw($size);
+}
+
+/// 高さを vw 単位に変換（SP用）
+@mixin sp-height-vw($size) {
+  height: sp-px-to-vw($size);
+}
+
+/// 最大高さを vw 単位に変換（PC用）
+@mixin max-height-vw($size) {
+  max-height: px-to-vw($size);
+}
+
+/// 最大高さを vw 単位に変換（SP用）
+@mixin sp-max-height-vw($size) {
+  max-height: sp-px-to-vw($size);
+}
+
+/// 最小高さを vw 単位に変換（SP用）
+@mixin sp-min-height-vw($size) {
+  min-height: sp-px-to-vw($size);
+}
+
+/* ==========================================================================
+   4. マージン (margin)
+   ========================================================================== */
+
+/// 上マージンを vw 単位に変換（PC用）
+@mixin margin-top-vw($size) {
+  margin-top: px-to-vw($size);
+}
+
+/// 上マージンを vw 単位に変換（SP用）
+@mixin sp-margin-top-vw($size) {
+  margin-top: sp-px-to-vw($size);
+}
+
+/// 下マージンを vw 単位に変換（PC用）
+@mixin margin-bottom-vw($size) {
+  margin-bottom: px-to-vw($size);
+}
+
+/// 下マージンを vw 単位に変換（SP用）
+@mixin sp-margin-bottom-vw($size) {
+  margin-bottom: sp-px-to-vw($size);
+}
+
+/// 左マージンを vw 単位に変換（PC用）
+@mixin margin-left-vw($size) {
+  margin-left: px-to-vw($size);
+}
+
+/// 左マージンを vw 単位に変換（SP用）
+@mixin sp-margin-left-vw($size) {
+  margin-left: sp-px-to-vw($size);
+}
+
+/// 右マージンを vw 単位に変換（PC用）
+@mixin margin-right-vw($size) {
+  margin-right: px-to-vw($size);
+}
+
+/// 右マージンを vw 単位に変換（SP用）
+@mixin sp-margin-right-vw($size) {
+  margin-right: sp-px-to-vw($size);
+}
+
+/// 4方向マージンをまとめて指定（PC用）
+@mixin margin-vw($top, $right, $bottom, $left) {
+  margin-top: px-to-vw($top);
+  margin-right: px-to-vw($right);
+  margin-bottom: px-to-vw($bottom);
+  margin-left: px-to-vw($left);
+}
+
+/// 4方向マージンをまとめて指定（SP用）
+@mixin sp-margin-vw($top, $right, $bottom, $left) {
+  margin-top: sp-px-to-vw($top);
+  margin-right: sp-px-to-vw($right);
+  margin-bottom: sp-px-to-vw($bottom);
+  margin-left: sp-px-to-vw($left);
+}
+
+/* ==========================================================================
+   5. パディング (padding)
+   ========================================================================== */
+
+/// 上パディングを vw 単位に変換（PC用）
+@mixin padding-top-vw($size) {
+  padding-top: px-to-vw($size);
+}
+
+/// 上パディングを vw 単位に変換（SP用）
+@mixin sp-padding-top-vw($size) {
+  padding-top: sp-px-to-vw($size);
+}
+
+/// 下パディングを vw 単位に変換（PC用）
+@mixin padding-bottom-vw($size) {
+  padding-bottom: px-to-vw($size);
+}
+
+/// 下パディングを vw 単位に変換（SP用）
+@mixin sp-padding-bottom-vw($size) {
+  padding-bottom: sp-px-to-vw($size);
+}
+
+/// 左パディングを vw 単位に変換（PC用）
+@mixin padding-left-vw($size) {
+  padding-left: px-to-vw($size);
+}
+
+/// 左パディングを vw 単位に変換（SP用）
+@mixin sp-padding-left-vw($size) {
+  padding-left: sp-px-to-vw($size);
+}
+
+/// 右パディングを vw 単位に変換（PC用）
+@mixin padding-right-vw($size) {
+  padding-right: px-to-vw($size);
+}
+
+/// 右パディングを vw 単位に変換（SP用）
+@mixin sp-padding-right-vw($size) {
+  padding-right: sp-px-to-vw($size);
+}
+
+/// 4方向パディングをまとめて指定（PC用）
+@mixin padding-vw($top, $right, $bottom, $left) {
+  padding-top: px-to-vw($top);
+  padding-right: px-to-vw($right);
+  padding-bottom: px-to-vw($bottom);
+  padding-left: px-to-vw($left);
+}
+
+/// 4方向パディングをまとめて指定（SP用）
+@mixin sp-padding-vw($top, $right, $bottom, $left) {
+  padding-top: sp-px-to-vw($top);
+  padding-right: sp-px-to-vw($right);
+  padding-bottom: sp-px-to-vw($bottom);
+  padding-left: sp-px-to-vw($left);
+}
+
+/* ==========================================================================
+   6. 位置調整 (top, bottom, left, right)
+   ========================================================================== */
+
+/// 上方向の位置を vw 単位に変換（PC用）
+@mixin top-vw($size) {
+  top: px-to-vw($size);
+}
+
+/// 上方向の位置を vw 単位に変換（SP用）
+@mixin sp-top-vw($size) {
+  top: sp-px-to-vw($size);
+}
+
+/// 下方向の位置を vw 単位に変換（PC用）
+@mixin bottom-vw($size) {
+  bottom: px-to-vw($size);
+}
+
+/// 下方向の位置を vw 単位に変換（SP用）
+@mixin sp-bottom-vw($size) {
+  bottom: sp-px-to-vw($size);
+}
+
+/// 左方向の位置を vw 単位に変換（PC用）
+@mixin left-vw($size) {
+  left: px-to-vw($size);
+}
+
+/// 左方向の位置を vw 単位に変換（SP用）
+@mixin sp-left-vw($size) {
+  left: sp-px-to-vw($size);
+}
+
+/// 右方向の位置を vw 単位に変換（PC用）
+@mixin right-vw($size) {
+  right: px-to-vw($size);
+}
+
+/// 右方向の位置を vw 単位に変換（SP用）
+@mixin sp-right-vw($size) {
+  right: sp-px-to-vw($size);
+}
+
+/* ==========================================================================
+   7. 位置調整 (translate)
+   ========================================================================== */
+
+/// 上下方向の位置を vw 単位に変換（PC用）
+@mixin translateY-vw($size) {
+  transform: translateY(px-to-vw($size));
+}
+
+/// 上下方向の位置を vw 単位に変換（SP用）
+@mixin sp-translateY-vw($size) {
+  transform: translateY(sp-px-to-vw($size));
+}
+
+/// 左右方向の位置を vw 単位に変換（PC用）
+@mixin translateX-vw($size) {
+  transform: translateX(px-to-vw($size));
+}
+
+/// 左右方向の位置を vw 単位に変換（SP用）
+@mixin sp-translateX-vw($size) {
+  transform: translateX(sp-px-to-vw($size));
+}
+
+/* ==========================================================================
+   8. ボーダー (border-radius)
+   ========================================================================== */
+
+/// 角丸を vw 単位に変換（PC用）
+@mixin border-radius-vw($size) {
+  border-radius: px-to-vw($size);
+}
+
+/// 角丸を vw 単位に変換（SP用）
+@mixin sp-border-radius-vw($size) {
+  border-radius: sp-px-to-vw($size);
+}
+
+/* ==========================================================================
+   9. メディアクエリ用の mixin
+   ========================================================================== */
+
+/// SP専用のスタイル適用用（max-width: $breakpoints.sp）
+@mixin sp-only {
+  @media (max-width: map.get($breakpoints, "sp")) {
+    @content;
+  }
+}
+
+/// PC専用のスタイル適用用（min-width: $breakpoints.pc）
+@mixin pc-only {
+  @media (min-width: map.get($breakpoints, "pc")) {
+    @content;
+  }
+}
+
+/* ==========================================================================
+   10. グラデーション mixin
+   ========================================================================== */
+@mixin red-gradient {
+  background: linear-gradient(90deg, #c30d23 0%, #5d0611 100%);
+}
+
+@mixin font-red-gradient {
+  background: linear-gradient(90deg, #c30d23 0%, #5d0611 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin grd-black {
+  background: linear-gradient(90deg, #424242 0%, #000000 100%);
+}
+
+
+/* ==========================================================================
+   11. bos-shadow mixin
+   ========================================================================== */
+@mixin shadow-red {
+  box-shadow: 0 3px 0 0 #7e0817;
+}
+
+@mixin shadow-black {
+  box-shadow: 0 3px 0 0 #000;
+}

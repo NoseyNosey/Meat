@@ -1,0 +1,27 @@
+@use '../../foundations/variables'as *;
+@use '../../foundations/mixins'as *;
+
+.sp {
+  display: none !important;
+  @include sp-only {
+    display: block !important;
+  }
+}
+.u-sp-only-ib {
+  display: none;
+  @include sp-only {
+    display: inline-block;
+  }
+}
+.pc {
+  display: none !important;
+  @include pc-only {
+    display: block !important;
+  }
+}
+.u-pc-only-ib {
+  display: none;
+  @include pc-only {
+    display: inline-block;
+  }
+}
